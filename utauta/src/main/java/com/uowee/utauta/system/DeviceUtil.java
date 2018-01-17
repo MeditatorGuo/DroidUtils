@@ -9,6 +9,7 @@ import android.os.SystemClock;
 import android.provider.Settings;
 
 import com.uowee.utauta.Util;
+import com.uowee.utauta.assist.ShellUtil;
 
 import java.io.File;
 import java.net.InetAddress;
