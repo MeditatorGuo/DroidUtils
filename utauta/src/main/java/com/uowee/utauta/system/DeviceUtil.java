@@ -24,6 +24,8 @@ import java.util.List;
 
 public final class DeviceUtil {
 
+
+
     private DeviceUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
@@ -50,8 +52,17 @@ public final class DeviceUtil {
      *
      * @return
      */
-    public static int getSDKVersion() {
+    public static int getOSVersionCode() {
         return Build.VERSION.SDK_INT;
+    }
+
+    /**
+     * 获取设备系统版本名
+     *
+     * @return
+     */
+    public static String getOSVersionName() {
+        return android.os.Build.VERSION.RELEASE;
     }
 
     /**
@@ -86,6 +97,23 @@ public final class DeviceUtil {
             model = "";
         }
         return model;
+    }
+
+    public static String getProduct() {
+        return Build.PRODUCT;
+    }
+
+    public static String getBrand() {
+        return android.os.Build.BRAND;
+    }
+
+    /**
+     * 获取操作系统版本显示名.
+     *
+     * @return 操作系统版本显示名
+     */
+    public static String getOSVersionDisplayName() {
+        return android.os.Build.DISPLAY;
     }
 
     /**
