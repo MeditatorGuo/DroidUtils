@@ -32,21 +32,6 @@ import java.util.zip.GZIPOutputStream;
 
 public final class FileUtil {
 
-    public static void closeIO(Closeable... closeables) {
-        if (null == closeables || closeables.length <= 0) {
-            return;
-        }
-        for (Closeable cb : closeables) {
-            try {
-                if (null == cb) {
-                    continue;
-                }
-                cb.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
 
     public static boolean isFileExist(String path) {
@@ -74,7 +59,7 @@ public final class FileUtil {
             isSuccess = true;
         } catch (Exception e) {
             e.printStackTrace();
-            closeIO(bufferedWriter);
+            CloseUtil.closeIO(bufferedWriter);
         }
 
         return isSuccess;
@@ -93,7 +78,7 @@ public final class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            closeIO(bufferedReader);
+            CloseUtil.closeIO(bufferedReader);
         }
         return str;
     }
@@ -121,7 +106,7 @@ public final class FileUtil {
             e.printStackTrace();
             throw new RuntimeException("IOException occurred. ", e);
         } finally {
-            closeIO(reader);
+            CloseUtil.closeIO(reader);
         }
     }
 
@@ -136,7 +121,7 @@ public final class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            closeIO(in, out);
+            CloseUtil.closeIO(in, out);
         }
     }
 
@@ -152,7 +137,7 @@ public final class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            closeIO(filein, fileout);
+            CloseUtil.closeIO(filein, fileout);
         }
     }
 
@@ -177,7 +162,7 @@ public final class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            closeIO(is, gzip);
+            CloseUtil.closeIO(is, gzip);
         }
     }
 
@@ -193,7 +178,7 @@ public final class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            closeIO(gzip, os);
+            CloseUtil.closeIO(gzip, os);
         }
     }
 
@@ -214,7 +199,7 @@ public final class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            closeIO(is, os);
+            CloseUtil.closeIO(is, os);
         }
     }
 

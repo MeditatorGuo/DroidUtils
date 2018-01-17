@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 
+import com.uowee.utauta.Util;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -20,15 +22,15 @@ public final class TelephoneUtil {
 
 
     @SuppressLint({"HardwareIds", "MissingPermission"})
-    public static String getIMEI(Context context) {
-        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+    public static String getIMEI() {
+        TelephonyManager telephonyManager = (TelephonyManager) Util.getApp().getSystemService(Context.TELEPHONY_SERVICE);
         String IMEI = telephonyManager.getDeviceId();
         return IMEI;
     }
 
     @SuppressLint({"HardwareIds", "MissingPermission"})
-    public static String getIMSI(Context context) {
-        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+    public static String getIMSI() {
+        TelephonyManager telephonyManager = (TelephonyManager) Util.getApp().getSystemService(Context.TELEPHONY_SERVICE);
         String IMSI = telephonyManager.getSubscriberId();
         return IMSI;
     }
@@ -37,13 +39,13 @@ public final class TelephoneUtil {
      * Print telephone info.
      */
     @SuppressLint("MissingPermission")
-    public static String printTelephoneInfo(Context context) {
+    public static String printTelephoneInfo() {
         Date date = new Date(System.currentTimeMillis());
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = dateFormat.format(date);
         StringBuilder sb = new StringBuilder();
         sb.append("_______ 手机信息  ").append(time).append(" ______________");
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tm = (TelephonyManager) Util.getApp().getSystemService(Context.TELEPHONY_SERVICE);
         String IMSI = tm.getSubscriberId();
         //IMSI前面三位460是国家号码，其次的两位是运营商代号，00、02是中国移动，01是联通，03是电信。
         String providerName = null;
@@ -77,7 +79,6 @@ public final class TelephoneUtil {
     }
 
 
-
     public static class TeleInfo {
         public String imsi_1;
         public String imsi_2;
@@ -104,7 +105,7 @@ public final class TelephoneUtil {
      * <p>
      * 获取 MTK 神机的双卡 IMSI、IMSI 信息
      */
-    public static TeleInfo getMtkTeleInfo(Context context) {
+    public static TeleInfo getMtkTeleInfo() {
         TeleInfo teleInfo = new TeleInfo();
         try {
             Class<?> phone = Class.forName("com.android.internal.telephony.Phone");
@@ -117,7 +118,7 @@ public final class TelephoneUtil {
             fields2.setAccessible(true);
             int simId_2 = (Integer) fields2.get(null);
 
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) Util.getApp().getSystemService(Context.TELEPHONY_SERVICE);
             Method getSubscriberIdGemini = TelephonyManager.class.getDeclaredMethod("getSubscriberIdGemini", int.class);
             String imsi_1 = (String) getSubscriberIdGemini.invoke(tm, simId_1);
             String imsi_2 = (String) getSubscriberIdGemini.invoke(tm, simId_2);
@@ -148,10 +149,10 @@ public final class TelephoneUtil {
      * 获取 MTK 神机的双卡 IMSI、IMSI 信息
      */
     @SuppressLint("MissingPermission")
-    public static TeleInfo getMtkTeleInfo2(Context context) {
+    public static TeleInfo getMtkTeleInfo2() {
         TeleInfo teleInfo = new TeleInfo();
         try {
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) Util.getApp().getSystemService(Context.TELEPHONY_SERVICE);
             Class<?> phone = Class.forName("com.android.internal.telephony.Phone");
             Field fields1 = phone.getField("GEMINI_SIM_1");
             fields1.setAccessible(true);
@@ -188,12 +189,13 @@ public final class TelephoneUtil {
      * Qualcomm Phone.
      * 获取 高通 神机的双卡 IMSI、IMSI 信息
      */
-    public static TeleInfo getQualcommTeleInfo(Context context) {
+    public static TeleInfo getQualcommTeleInfo() {
         TeleInfo teleInfo = new TeleInfo();
         try {
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) Util.getApp().getSystemService(Context.TELEPHONY_SERVICE);
             Class<?> simTMclass = Class.forName("android.telephony.MSimTelephonyManager");
-            Object sim = context.getSystemService("phone_msim");
+            @SuppressLint("WrongConstant")
+            Object sim = Util.getApp().getSystemService("phone_msim");
             int simId_1 = 0;
             int simId_2 = 1;
 
@@ -226,11 +228,10 @@ public final class TelephoneUtil {
      * 获取 展讯 神机的双卡 IMSI、IMSI 信息
      */
     @SuppressLint("MissingPermission")
-    public static TeleInfo getSpreadtrumTeleInfo(Context context) {
+    public static TeleInfo getSpreadtrumTeleInfo() {
         TeleInfo teleInfo = new TeleInfo();
         try {
-
-            TelephonyManager tm1 = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm1 = (TelephonyManager) Util.getApp().getSystemService(Context.TELEPHONY_SERVICE);
             String imsi_1 = tm1.getSubscriberId();
             String imei_1 = tm1.getDeviceId();
             int phoneType_1 = tm1.getPhoneType();
@@ -243,7 +244,7 @@ public final class TelephoneUtil {
             getServiceName.setAccessible(true);
             String spreadTmService = (String) getServiceName.invoke(phoneFactory, Context.TELEPHONY_SERVICE, 1);
 
-            TelephonyManager tm2 = (TelephonyManager) context.getSystemService(spreadTmService);
+            TelephonyManager tm2 = (TelephonyManager) Util.getApp().getSystemService(spreadTmService);
             String imsi_2 = tm2.getSubscriberId();
             String imei_2 = tm2.getDeviceId();
             int phoneType_2 = tm2.getPhoneType();
