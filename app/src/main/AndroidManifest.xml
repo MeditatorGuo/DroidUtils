@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RootActivity">
+        <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,16 +17,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".LinearLayoutHelperActivity"></activity>
-        <activity android:name=".GridLayoutHelperActivity"></activity>
-        <activity android:name=".StaggeredGridLayoutHelperActivity"></activity>
-        <activity android:name=".ColumnLayoutHelperActivity"></activity>
-        <activity android:name=".SingleLayoutHelperActivity"></activity>
-        <activity android:name=".StickyLayoutHelperActivity"></activity>
-        <activity android:name=".ScrollFixLayoutHelperActivity"></activity>
-        <activity android:name=".FixLayoutHelperActivity"></activity>
-        <activity android:name=".FloatLayoutHelperActivity"></activity>
-        <activity android:name=".OnePlusNLayoutHelperActivity"></activity>
+        <activity android:name=".layout.RootActivity"></activity>
+        <activity android:name=".layout.AllLayoutActivity"></activity>
+        <activity android:name=".layout.LinearLayoutHelperActivity"></activity>
+        <activity android:name=".layout.GridLayoutHelperActivity"></activity>
+        <activity android:name=".layout.StaggeredGridLayoutHelperActivity"></activity>
+        <activity android:name=".layout.ColumnLayoutHelperActivity"></activity>
+        <activity android:name=".layout.SingleLayoutHelperActivity"></activity>
+        <activity android:name=".layout.StickyLayoutHelperActivity"></activity>
+        <activity android:name=".layout.ScrollFixLayoutHelperActivity"></activity>
+        <activity android:name=".layout.FixLayoutHelperActivity"></activity>
+        <activity android:name=".layout.FloatLayoutHelperActivity"></activity>
+        <activity android:name=".layout.OnePlusNLayoutHelperActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.uowee.droid.util;
+package com.uowee.droid.util.layout;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,7 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
-import com.uowee.droid.util.adapter.SingleLayoutAdapter;
+import com.uowee.droid.util.R;
+import com.uowee.droid.util.layout.adapter.SingleLayoutAdapter;
 import com.uowee.tangram.VirtualLayoutManager;
 import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.SingleLayoutHelper;
@@ -37,7 +38,6 @@ public class SingleLayoutHelperActivity extends AppCompatActivity {
 
     public static SingleLayoutAdapter init(Context context) {
         SingleLayoutHelper helper = new SingleLayoutHelper();
-        helper.setMargin(20, 20, 20, 20);
         SingleLayoutAdapter adapter = new SingleLayoutAdapter(context, helper, "SingleLayoutHelper");
         return adapter;
     }

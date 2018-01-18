@@ -8,22 +8,28 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.uowee.droid.util.R;
+import com.uowee.droid.util.layout.adapter.DelegateRecyclerAdapter;
 import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.LayoutHelper;
 
+/**
+ * Created by GuoWee on 2018/1/18.
+ */
 
-public class DelegateRecyclerAdapter extends DelegateAdapter.Adapter {
+public class LinearAdapter extends DelegateAdapter.Adapter {
+
     public Context context;
     private LayoutHelper helper;
     private LayoutInflater inflater;
-    private String name;
+    private String title;
 
-    public DelegateRecyclerAdapter(Context context, LayoutHelper helper, String name) {
+    public LinearAdapter(Context context, LayoutHelper helper, String title) {
         this.inflater = LayoutInflater.from(context);
         this.helper = helper;
         this.context = context;
-        this.name = name;
+        this.title = title;
     }
+
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
@@ -32,31 +38,27 @@ public class DelegateRecyclerAdapter extends DelegateAdapter.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MyViewHolder(inflater.inflate(R.layout.layout_item, parent, false));
+        return new MyViewHolder(inflater.inflate(R.layout.title_layout_item, parent, false));
+
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (position % 2 == 0) {
-            holder.itemView.setBackgroundColor(0xaa3A5FCD);
-        } else {
-            holder.itemView.setBackgroundColor(0xcc90EE90);
-        }
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        myViewHolder.name.setText(name + (position + 1) + "");
+        myViewHolder.title.setText(title);
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 1;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name;
+        public TextView title;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.item_name);
+            title = (TextView) itemView.findViewById(R.id.item_title);
         }
     }
 

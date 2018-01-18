@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DroidUtils</string>
+    <string name="test_layout">Tangram</string>
+    <string name="test_util">Utauta</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.uowee.droid.util.adapter;
+package com.uowee.droid.util.layout.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

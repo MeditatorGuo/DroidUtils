@@ -1,4 +1,4 @@
-package com.uowee.droid.util;
+package com.uowee.droid.util.layout;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import android.widget.ListView;
 public class RootActivity extends ListActivity {
 
     private String[] mTitles = new String[]{
-            MainActivity.class.getSimpleName(),
+            AllLayoutActivity.class.getSimpleName(),
             LinearLayoutHelperActivity.class.getSimpleName(),
             GridLayoutHelperActivity.class.getSimpleName(),
             StaggeredGridLayoutHelperActivity.class.getSimpleName(),
@@ -30,7 +30,7 @@ public class RootActivity extends ListActivity {
     };
 
     private Class[] mActivities = new Class[]{
-            MainActivity.class,
+            AllLayoutActivity.class,
             LinearLayoutHelperActivity.class,
             GridLayoutHelperActivity.class,
             StaggeredGridLayoutHelperActivity.class,
