@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.uowee.droid.util.R;
-import com.uowee.droid.util.layout.adapter.DelegateRecyclerAdapter;
 import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.LayoutHelper;
 

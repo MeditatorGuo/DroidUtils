@@ -5,23 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
+import com.uowee.droid.util.adapter.GridViewAdapter;
 import com.uowee.droid.util.adapter.LinearAdapter;
-import com.uowee.droid.util.layout.ColumnLayoutHelperActivity;
-import com.uowee.droid.util.layout.FixLayoutHelperActivity;
-import com.uowee.droid.util.layout.FloatLayoutHelperActivity;
-import com.uowee.droid.util.layout.GridLayoutHelperActivity;
-import com.uowee.droid.util.layout.LinearLayoutHelperActivity;
-import com.uowee.droid.util.layout.OnePlusNLayoutHelperActivity;
-import com.uowee.droid.util.layout.ScrollFixLayoutHelperActivity;
-import com.uowee.droid.util.layout.SingleLayoutHelperActivity;
-import com.uowee.droid.util.layout.StaggeredGridLayoutHelperActivity;
-import com.uowee.droid.util.layout.StickyLayoutHelperActivity;
-import com.uowee.droid.util.layout.adapter.DelegateRecyclerAdapter;
 import com.uowee.tangram.VirtualLayoutManager;
 import com.uowee.tangram.adapter.DelegateAdapter;
+import com.uowee.tangram.helper.GridLayoutHelper;
 import com.uowee.tangram.helper.LinearLayoutHelper;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -47,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setRecycledViewPool(viewPool);
         viewPool.setMaxRecycledViews(0, 10);
 
-        adapters.add(init(this));
-        adapters.add(GridLayoutHelperActivity.init(this));
+        adapters.add(initLinearLayout(this));
+        adapters.add(initGridLayout(this));
 
 
         VirtualLayoutManager manager = new VirtualLayoutManager(this);
@@ -60,9 +54,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static LinearAdapter init(Context context) {
+    public static LinearAdapter initLinearLayout(Context context) {
         LinearLayoutHelper helper = new LinearLayoutHelper();
         LinearAdapter adapter = new LinearAdapter(context, helper, "System");
+        return adapter;
+    }
+
+    public static GridViewAdapter initGridLayout(final Context context) {
+        GridLayoutHelper helper = new GridLayoutHelper(3);
+        helper.setAutoExpand(false);
+
+        List<String> titles = new ArrayList<>();
+        titles.add("aaaaa");
+        titles.add("bbbbb");
+        titles.add("ccccc");
+        titles.add("ddddd");
+        titles.add("eeeee");
+        titles.add("wwwww");
+        List<Integer> images = new ArrayList<>();
+        images.add(R.mipmap.genius);
+        images.add(R.mipmap.ic_launcher);
+        images.add(R.mipmap.ic_launcher);
+        images.add(R.mipmap.ic_launcher);
+        images.add(R.mipmap.ic_launcher);
+        images.add(R.mipmap.ic_launcher);
+        GridViewAdapter adapter = new GridViewAdapter(context, helper, images, titles);
+        adapter.setOnGridViewItemListener(new GridViewAdapter.OnGridViewItemListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(context, "HHHHHHHHHHH", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
         return adapter;
     }
 }
