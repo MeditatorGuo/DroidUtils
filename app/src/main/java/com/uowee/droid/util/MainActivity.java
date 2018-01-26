@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         helper.setAutoExpand(false);
 
         List<String> titles = new ArrayList<>();
-        titles.add("aaaaa");
+        titles.add("Screen");
         titles.add("bbbbb");
         titles.add("ccccc");
         titles.add("ddddd");
