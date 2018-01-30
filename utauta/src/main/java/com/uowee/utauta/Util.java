@@ -14,7 +14,7 @@ public final class Util {
 
     private static Application mApp;
 
-    private static void init(Application app) {
+    public static void init(Application app) {
         mApp = app;
     }
 

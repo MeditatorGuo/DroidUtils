@@ -1,4 +1,4 @@
-package com.uowee.droid.util.layout.adapter;
+package com.uowee.droid.layout.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -15,49 +15,54 @@ import com.uowee.tangram.helper.LayoutHelper;
  * Created by GuoWee on 2018/1/14.
  */
 
-public class FixLayoutAdapter extends DelegateAdapter.Adapter {
-
+public class StaggeredAdapter extends DelegateAdapter.Adapter {
     private Context context;
     private LayoutHelper helper;
     private LayoutInflater inflater;
-    private String text;
+    private String name;
 
-    public FixLayoutAdapter(Context context, LayoutHelper helper, String text) {
+    public StaggeredAdapter(Context context, LayoutHelper helper, String name) {
         this.context = context;
-        this.helper = helper;
         this.inflater = LayoutInflater.from(context);
-        this.text = text;
+        this.helper = helper;
+        this.name = name;
     }
 
-    @Override
     public LayoutHelper onCreateLayoutHelper() {
         return helper;
     }
 
+    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MyViewholder(inflater.inflate(R.layout.layout_text, null));
+        return new MyViewholder(inflater.inflate(R.layout.layout_item, parent, false));
     }
 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (position % 2 == 0) {
-            holder.itemView.setBackgroundColor(0xaa191919);
+            holder.itemView.setBackgroundColor(0xaa3A5FCD);
         } else {
-            holder.itemView.setBackgroundColor(0xcc666666);
+            holder.itemView.setBackgroundColor(0xcc90EE90);
         }
+        ViewGroup.LayoutParams layoutParams = ((MyViewholder) holder).text.getLayoutParams();
+        layoutParams.height = 260 + position % 3 * 20;
+        ((MyViewholder) holder).text.setLayoutParams(layoutParams);
+        ((MyViewholder) holder).text.setText(position + 1 + "");
         MyViewholder myViewholder = (MyViewholder) holder;
-        myViewholder.textView.setText(text);
+        myViewholder.text.setText(name);
+
     }
 
     public int getItemCount() {
-        return 1;
+        return 20;
     }
 
     public class MyViewholder extends RecyclerView.ViewHolder {
-        private TextView textView;
+        private TextView text;
 
         public MyViewholder(View view) {
             super(view);
-            textView = view.findViewById(R.id.fix_name);
+            text = (TextView) view.findViewById(R.id.item_name);
         }
     }
+
 }

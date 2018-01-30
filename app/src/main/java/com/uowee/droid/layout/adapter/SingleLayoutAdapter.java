@@ -1,4 +1,4 @@
-package com.uowee.droid.util.adapter;
+package com.uowee.droid.layout.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,23 +12,21 @@ import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.LayoutHelper;
 
 /**
- * Created by GuoWee on 2018/1/18.
+ * Created by GuoWee on 2018/1/14.
  */
 
-public class LinearAdapter extends DelegateAdapter.Adapter {
-
+public class SingleLayoutAdapter extends DelegateAdapter.Adapter {
     public Context context;
     private LayoutHelper helper;
     private LayoutInflater inflater;
-    private String title;
+    private String name;
 
-    public LinearAdapter(Context context, LayoutHelper helper, String title) {
+    public SingleLayoutAdapter(Context context, LayoutHelper helper, String name) {
         this.inflater = LayoutInflater.from(context);
         this.helper = helper;
         this.context = context;
-        this.title = title;
+        this.name = name;
     }
-
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
@@ -37,14 +35,18 @@ public class LinearAdapter extends DelegateAdapter.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MyViewHolder(inflater.inflate(R.layout.title_layout_item, parent, false));
-
+        return new MyViewHolder(inflater.inflate(R.layout.layout_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (position % 2 == 0) {
+            holder.itemView.setBackgroundColor(0xaa3F51B5);
+        } else {
+            holder.itemView.setBackgroundColor(0xccFF4081);
+        }
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        myViewHolder.title.setText(title);
+        myViewHolder.name.setText(name + (position + 1) + "");
     }
 
     @Override
@@ -53,11 +55,11 @@ public class LinearAdapter extends DelegateAdapter.Adapter {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
+        public TextView name;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.item_title);
+            name = (TextView) itemView.findViewById(R.id.item_name);
         }
     }
 

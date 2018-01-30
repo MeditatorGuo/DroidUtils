@@ -55,6 +55,7 @@ public final class ScreenUtil {
 
     /**
      * 横竖屏
+     * portrait: 竖屏
      *
      * @return
      */
@@ -110,10 +111,9 @@ public final class ScreenUtil {
     /**
      * 获得状态栏的高度
      *
-     * @param context
      * @return
      */
-    public static int getStatusHeight(Context context) {
+    public static int getStatusHeight() {
 
         int statusHeight = -1;
         try {
@@ -121,7 +121,7 @@ public final class ScreenUtil {
             Object object = clazz.newInstance();
             int height = Integer.parseInt(clazz.getField("status_bar_height")
                     .get(object).toString());
-            statusHeight = context.getResources().getDimensionPixelSize(height);
+            statusHeight = Util.getApp().getResources().getDimensionPixelSize(height);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -130,7 +130,7 @@ public final class ScreenUtil {
 
 
     /**
-     * 获得屏幕高度
+     * 获得屏幕高度(不包含底部导航栏的高度)
      *
      * @return
      */

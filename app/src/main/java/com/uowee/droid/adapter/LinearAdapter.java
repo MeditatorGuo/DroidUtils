@@ -1,4 +1,4 @@
-package com.uowee.droid.util.layout.adapter;
+package com.uowee.droid.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,20 +12,23 @@ import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.LayoutHelper;
 
 /**
- * Created by GuoWee on 2018/1/14.
+ * Created by GuoWee on 2018/1/18.
  */
 
-public class StickyLayoutAdapter extends DelegateAdapter.Adapter {
+public class LinearAdapter extends DelegateAdapter.Adapter {
 
     public Context context;
     private LayoutHelper helper;
     private LayoutInflater inflater;
+    private String title;
 
-    public StickyLayoutAdapter(Context context,LayoutHelper helper){
+    public LinearAdapter(Context context, LayoutHelper helper, String title) {
         this.inflater = LayoutInflater.from(context);
         this.helper = helper;
-        this.context=context;
+        this.context = context;
+        this.title = title;
     }
+
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
@@ -34,12 +37,14 @@ public class StickyLayoutAdapter extends DelegateAdapter.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MyViewHolder(inflater.inflate(R.layout.layout_sticy,parent,false));
+        return new MyViewHolder(inflater.inflate(R.layout.title_layout_item, parent, false));
+
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        MyViewHolder myViewHolder = (MyViewHolder) holder;
+        myViewHolder.title.setText(title);
     }
 
     @Override
@@ -47,11 +52,13 @@ public class StickyLayoutAdapter extends DelegateAdapter.Adapter {
         return 1;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        public TextView name;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView title;
+
         public MyViewHolder(View itemView) {
             super(itemView);
-            name=(TextView)itemView.findViewById(R.id.item_name);
+            title = (TextView) itemView.findViewById(R.id.item_title);
         }
     }
+
 }

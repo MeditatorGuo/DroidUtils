@@ -3,32 +3,33 @@
     package="com.uowee.droid.util">
 
     <application
+        android:name="com.uowee.droid.app.DroidApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartActivity">
+        <activity android:name="com.uowee.droid.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".layout.RootActivity"></activity>
-        <activity android:name=".layout.AllLayoutActivity"></activity>
-        <activity android:name=".layout.LinearLayoutHelperActivity"></activity>
-        <activity android:name=".layout.GridLayoutHelperActivity"></activity>
-        <activity android:name=".layout.StaggeredGridLayoutHelperActivity"></activity>
-        <activity android:name=".layout.ColumnLayoutHelperActivity"></activity>
-        <activity android:name=".layout.SingleLayoutHelperActivity"></activity>
-        <activity android:name=".layout.StickyLayoutHelperActivity"></activity>
-        <activity android:name=".layout.ScrollFixLayoutHelperActivity"></activity>
-        <activity android:name=".layout.FixLayoutHelperActivity"></activity>
-        <activity android:name=".layout.FloatLayoutHelperActivity"></activity>
-        <activity android:name=".layout.OnePlusNLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.MainActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.RootActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.AllLayoutActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.LinearLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.GridLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.StaggeredGridLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.ColumnLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.SingleLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.StickyLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.ScrollFixLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.FixLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.FloatLayoutHelperActivity"></activity>
+        <activity android:name="com.uowee.droid.layout.OnePlusNLayoutHelperActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.uowee.droid.util.layout;
+package com.uowee.droid.layout;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,17 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
 import com.uowee.droid.util.R;
-import com.uowee.droid.util.layout.adapter.SingleLayoutAdapter;
+import com.uowee.droid.layout.adapter.ColumnLayoutAdapter;
 import com.uowee.tangram.VirtualLayoutManager;
 import com.uowee.tangram.adapter.DelegateAdapter;
-import com.uowee.tangram.helper.SingleLayoutHelper;
+import com.uowee.tangram.helper.ColumnLayoutHelper;
 
 /**
  * Created by GuoWee on 2018/1/14.
  */
 
-public class SingleLayoutHelperActivity extends AppCompatActivity {
-
+public class ColumnLayoutHelperActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
@@ -28,17 +27,19 @@ public class SingleLayoutHelperActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerview);
         VirtualLayoutManager manager = new VirtualLayoutManager(this);
         mRecyclerView.setLayoutManager(manager);
-
         DelegateAdapter adapter = new DelegateAdapter(manager, true);
-        adapter.addAdapter(init(this));
+
+        adapter.addAdapter(initColumnLayout(this));
         mRecyclerView.setAdapter(adapter);
 
     }
 
+    public static ColumnLayoutAdapter initColumnLayout(Context context) {
+        ColumnLayoutHelper helper = new ColumnLayoutHelper();
+        helper.setWeights(new float[]{20,20,20,20,20}); //float数组总和为100
+        helper.setMarginBottom(20);
 
-    public static SingleLayoutAdapter init(Context context) {
-        SingleLayoutHelper helper = new SingleLayoutHelper();
-        SingleLayoutAdapter adapter = new SingleLayoutAdapter(context, helper, "SingleLayoutHelper");
-        return adapter;
+        ColumnLayoutAdapter columnLayoutAdapter = new ColumnLayoutAdapter(context, helper, "ColumnLayoutHelper");
+        return columnLayoutAdapter;
     }
 }

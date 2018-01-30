@@ -1,4 +1,4 @@
-package com.uowee.droid.util.layout;
+package com.uowee.droid.layout;
 
 import android.app.ListActivity;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.uowee.droid.util.layout;
+package com.uowee.droid.layout;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
 import com.uowee.droid.util.R;
-import com.uowee.droid.util.layout.adapter.DelegateRecyclerAdapter;
-import com.uowee.droid.util.layout.adapter.FixLayoutAdapter;
-import com.uowee.droid.util.layout.adapter.StaggeredAdapter;
+import com.uowee.droid.layout.adapter.DelegateRecyclerAdapter;
+import com.uowee.droid.layout.adapter.FixLayoutAdapter;
+import com.uowee.droid.layout.adapter.StaggeredAdapter;
 import com.uowee.tangram.VirtualLayoutManager;
 import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.LinearLayoutHelper;

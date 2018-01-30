@@ -1,4 +1,4 @@
-package com.uowee.droid.util.adapter;
+package com.uowee.droid.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.uowee.droid.util.R;
+import com.uowee.droid.model.GridItem;
 import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.LayoutHelper;
 
@@ -21,16 +22,14 @@ import java.util.List;
 public class GridViewAdapter extends DelegateAdapter.Adapter {
 
     private Context mContext;
-    private List<String> titles;
-    private List<Integer> images;
+    private List<GridItem> list;
     private LayoutInflater inflater;
     private LayoutHelper helper;
 
 
-    public GridViewAdapter(Context context, LayoutHelper helper, List<Integer> images, List<String> titles) {
+    public GridViewAdapter(Context context, LayoutHelper helper, List<GridItem> items) {
         this.mContext = context;
-        this.images = images;
-        this.titles = titles;
+        this.list = items;
         this.helper = helper;
         this.inflater = LayoutInflater.from(context);
     }
@@ -70,13 +69,13 @@ public class GridViewAdapter extends DelegateAdapter.Adapter {
                 }
             });
         }
-        viewHolder.textView.setText(titles.get(position));
-        viewHolder.imageView.setImageResource(images.get(position));
+        viewHolder.textView.setText(list.get(position).getTitle());
+        viewHolder.imageView.setImageResource(list.get(position).getImage());
     }
 
     @Override
     public int getItemCount() {
-        return titles.size();
+        return list.size();
     }
 
     public class MyHoldView extends RecyclerView.ViewHolder {
