@@ -24,7 +24,7 @@ public class SystemPresenter implements SystemContract.Presenter {
     @Override
     public void getDeviceInfo() {
         String name = DeviceUtil.getOSVersionDisplayName();
-        mView.showDeviceInfo(name);
+        mView.showMessage(name);
 
     }
 
@@ -35,6 +35,6 @@ public class SystemPresenter implements SystemContract.Presenter {
         buffer.append(ScreenUtil.getStatusHeight() + ", " + ScreenUtil.getBottomStatusHeight() + "\n");
         buffer.append(ScreenUtil.isScreenOriatationPortrait());
 
-        mView.showScreenInfo(buffer.toString());
+        mView.showMessage(buffer.toString());
     }
 }

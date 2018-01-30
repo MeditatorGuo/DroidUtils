@@ -10,9 +10,7 @@ import com.uowee.droid.BaseView;
 public interface SystemContract {
 
     interface View extends BaseView<Presenter> {
-        void showDeviceInfo(String message);
-
-        void showScreenInfo(String message);
+        void showMessage(String message);
     }
 
 

@@ -124,17 +124,13 @@ public class MainActivity extends AppCompatActivity implements SystemContract.Vi
         mSystemPresenter = (SystemPresenter) presenter;
     }
 
-    @Override
-    public void showScreenInfo(String message) {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
-        builder1.setMessage(message);
-        builder1.create().show();
-    }
 
     @Override
-    public void showDeviceInfo(String message) {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
-        builder1.setMessage(message);
-        builder1.create().show();
+    public void showMessage(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setMessage(message);
+        builder.create().show();
     }
+
+
 }
