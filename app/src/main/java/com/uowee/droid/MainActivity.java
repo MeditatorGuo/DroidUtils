@@ -11,13 +11,13 @@ import android.view.View;
 import com.uowee.droid.adapter.GridViewAdapter;
 import com.uowee.droid.adapter.LinearAdapter;
 import com.uowee.droid.model.GridItem;
+import com.uowee.droid.system.SystemContract;
+import com.uowee.droid.system.SystemPresenter;
 import com.uowee.droid.util.R;
 import com.uowee.tangram.VirtualLayoutManager;
 import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.GridLayoutHelper;
 import com.uowee.tangram.helper.LinearLayoutHelper;
-import com.uowee.utauta.system.DeviceUtil;
-import com.uowee.utauta.system.ScreenUtil;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -27,7 +27,7 @@ import java.util.List;
  * Created by GuoWee on 2018/1/18.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SystemContract.View {
     private static List<GridItem> items = null;
 
     static {
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private DelegateAdapter delegateAdapter;
     final List<DelegateAdapter.Adapter> adapters = new LinkedList<>();
 
+    private SystemPresenter mSystemPresenter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
         mContext = this;
         mRecyclerView = findViewById(R.id.main_view);
         initView();
+
+        mSystemPresenter = new SystemPresenter(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSystemPresenter.start();
     }
 
     public void initView() {
@@ -91,14 +101,10 @@ public class MainActivity extends AppCompatActivity {
         public void onItemClick(View view, int position) {
             switch (position) {
                 case 1:
-                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                    builder.setMessage(getScreenInfo());
-                    builder.create().show();
+                    mSystemPresenter.getScreenInfo();
                     break;
                 case 2:
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
-                    builder1.setMessage(getDeviceInfo());
-                    builder1.create().show();
+                    mSystemPresenter.getDeviceInfo();
                     break;
                 default:
                     break;
@@ -113,29 +119,22 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
-    private String getScreenInfo() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append(ScreenUtil.getScreenWidth() + "*" + ScreenUtil.getDpi() + "\n");
-        buffer.append(ScreenUtil.getStatusHeight() + "+" + ScreenUtil.getBottomStatusHeight() + "\n");
-        buffer.append(ScreenUtil.getTitleHeight(this) + "\n");
-        buffer.append(ScreenUtil.isScreenOriatationPortrait());
-        return buffer.toString();
+    @Override
+    public void setPresenter(SystemContract.Presenter presenter) {
+        mSystemPresenter = (SystemPresenter) presenter;
     }
 
-    private String getDeviceInfo() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append(DeviceUtil.getBootTimeString() + "\n");
-        buffer.append(DeviceUtil.getOSVersionCode() + "\n");
-        buffer.append(DeviceUtil.getOSVersionName() + "\n");
-        buffer.append(DeviceUtil.getOSVersionDisplayName() + "\n");
-        buffer.append(DeviceUtil.getAndroidID() + "\n");
-        buffer.append(DeviceUtil.getModel() + ", " + DeviceUtil.getManufacturer() + "\n");
-        buffer.append(DeviceUtil.isDeviceRooted() + ", " + DeviceUtil.getBrand() + ", " + DeviceUtil.getMacAddress());
-
-
-        return buffer.toString();
+    @Override
+    public void showScreenInfo(String message) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
+        builder1.setMessage(message);
+        builder1.create().show();
     }
 
-
+    @Override
+    public void showDeviceInfo(String message) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
+        builder1.setMessage(message);
+        builder1.create().show();
+    }
 }
