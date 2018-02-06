@@ -59,8 +59,8 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
         super(builder.context, R.style.easy_light);
         mBuilder = builder;
         final LayoutInflater inflater = LayoutInflater.from(builder.context);
-        rootView = (EasyDialogLayout) inflater.inflate(DialogInit.getInflateLayout(builder), null);
-        DialogInit.init(this);
+        rootView = (EasyDialogLayout) inflater.inflate(EasyDialogController.getInflateLayout(builder), null);
+        EasyDialogController.init(this);
     }
 
     public final Builder getBuilder() {
@@ -282,9 +282,6 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
             dividerColorRes = R.color.pers10_black;
             itemsBackgroundRes = R.drawable.press_rect_selector;
             bottomSpColor = Utils.getColor(context, R.color.pers10_black);
-
-            //normal mode (字体大小 标题、按钮 17sp 内容16sp , 标题、按钮高度50dp)
-            //small mode (梯子大小 标题、按钮 16sp 内容 14sp, 标题，按钮高度40dp，标题不加粗)
 
             progressPercentFormat = NumberFormat.getPercentInstance();
             progressNumberFormat = "%1d/%2d";

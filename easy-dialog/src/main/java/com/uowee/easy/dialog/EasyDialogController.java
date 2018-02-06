@@ -21,7 +21,7 @@ import com.uowee.easy.dialog.adapter.ViewHolder;
 import com.uowee.easy.dialog.utils.Utils;
 import com.uowee.easy.dialog.view.EasyButton;
 
-public class DialogInit {
+public class EasyDialogController {
     public static void init(EasyDialog dialog) {
         final EasyDialog.Builder builder = dialog.getBuilder();
 
@@ -119,7 +119,7 @@ public class DialogInit {
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT));
 
-                //TODO 这里如果启用了ScrollView，默认高度为320dp
+                //这里如果启用了ScrollView，默认高度为320dp
                 dialog.customViewFrame.addView(sv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         Utils.dp2px(320)));
             } else {
