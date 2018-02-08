@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements SystemContract.Vi
         items.add(new GridItem("Screen", R.mipmap.genius));
         items.add(new GridItem("Device", R.mipmap.genius));
         items.add(new GridItem("CPU", R.mipmap.genius));
-        items.add(new GridItem("Screen", R.mipmap.genius));
+        items.add(new GridItem("Telephone", R.mipmap.genius));
         items.add(new GridItem("Screen", R.mipmap.genius));
     }
 
@@ -109,6 +109,9 @@ public class MainActivity extends AppCompatActivity implements SystemContract.Vi
                     break;
                 case 3:
                     mSystemPresenter.getCpuInfo();
+                    break;
+                case 4:
+                    mSystemPresenter.getTelephoneInfo();
                     break;
                 default:
                     break;

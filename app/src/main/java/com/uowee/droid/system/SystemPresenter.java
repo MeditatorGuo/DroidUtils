@@ -3,6 +3,7 @@ package com.uowee.droid.system;
 import com.uowee.utauta.system.CpuUtil;
 import com.uowee.utauta.system.DeviceUtil;
 import com.uowee.utauta.system.ScreenUtil;
+import com.uowee.utauta.system.TelephoneUtil;
 
 /**
  * Created by GuoWee on 2018/1/30.
@@ -14,7 +15,7 @@ public class SystemPresenter implements SystemContract.Presenter {
 
     public SystemPresenter(SystemContract.View view) {
         mView = view;
-        mView.setPresenter(this);
+        //mView.setPresenter(this);
     }
 
     @Override
@@ -46,5 +47,11 @@ public class SystemPresenter implements SystemContract.Presenter {
         buffer.append(CpuUtil.getCpuName() + "\n");
         buffer.append(CpuUtil.getCoresNumbers());
         mView.showMessage(buffer.toString());
+    }
+
+    @Override
+    public void getTelephoneInfo() {
+        String message = TelephoneUtil.getIMEI();
+        mView.showMessage(message);
     }
 }

@@ -20,5 +20,7 @@ public interface SystemContract {
         void getScreenInfo();
 
         void getCpuInfo();
+
+        void getTelephoneInfo();
     }
 }
