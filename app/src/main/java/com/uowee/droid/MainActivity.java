@@ -14,6 +14,7 @@ import com.uowee.droid.model.GridItem;
 import com.uowee.droid.system.SystemContract;
 import com.uowee.droid.system.SystemPresenter;
 import com.uowee.droid.util.R;
+import com.uowee.easy.dialog.EasyDialog;
 import com.uowee.tangram.VirtualLayoutManager;
 import com.uowee.tangram.adapter.DelegateAdapter;
 import com.uowee.tangram.helper.GridLayoutHelper;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements SystemContract.Vi
         items = new ArrayList<>();
         items.add(new GridItem("Screen", R.mipmap.genius));
         items.add(new GridItem("Device", R.mipmap.genius));
-        items.add(new GridItem("Screen", R.mipmap.genius));
+        items.add(new GridItem("CPU", R.mipmap.genius));
         items.add(new GridItem("Screen", R.mipmap.genius));
         items.add(new GridItem("Screen", R.mipmap.genius));
     }
@@ -106,6 +107,9 @@ public class MainActivity extends AppCompatActivity implements SystemContract.Vi
                 case 2:
                     mSystemPresenter.getDeviceInfo();
                     break;
+                case 3:
+                    mSystemPresenter.getCpuInfo();
+                    break;
                 default:
                     break;
             }
@@ -127,9 +131,12 @@ public class MainActivity extends AppCompatActivity implements SystemContract.Vi
 
     @Override
     public void showMessage(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setMessage(message);
+        EasyDialog.Builder builder = new EasyDialog.Builder(mContext);
+        builder.content(message).positiveText("OK");
+
         builder.create().show();
+
+
     }
 
 

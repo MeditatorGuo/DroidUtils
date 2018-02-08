@@ -1,5 +1,6 @@
 package com.uowee.droid.system;
 
+import com.uowee.utauta.system.CpuUtil;
 import com.uowee.utauta.system.DeviceUtil;
 import com.uowee.utauta.system.ScreenUtil;
 
@@ -35,6 +36,15 @@ public class SystemPresenter implements SystemContract.Presenter {
         buffer.append(ScreenUtil.getStatusHeight() + ", " + ScreenUtil.getBottomStatusHeight() + "\n");
         buffer.append(ScreenUtil.isScreenOriatationPortrait());
 
+        mView.showMessage(buffer.toString());
+    }
+
+    @Override
+    public void getCpuInfo() {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(CpuUtil.getCpuInfo() + "\n");
+        buffer.append(CpuUtil.getCpuName() + "\n");
+        buffer.append(CpuUtil.getCoresNumbers());
         mView.showMessage(buffer.toString());
     }
 }

@@ -18,5 +18,7 @@ public interface SystemContract {
         void getDeviceInfo();
 
         void getScreenInfo();
+
+        void getCpuInfo();
     }
 }
