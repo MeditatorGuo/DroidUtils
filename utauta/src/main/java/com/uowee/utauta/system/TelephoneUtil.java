@@ -44,7 +44,7 @@ public final class TelephoneUtil {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = dateFormat.format(date);
         StringBuilder sb = new StringBuilder();
-        sb.append("_______ 手机信息  ").append(time).append(" ______________");
+        sb.append("手机信息  ").append(time).append(" ______________");
         TelephonyManager tm = (TelephonyManager) Util.getApp().getSystemService(Context.TELEPHONY_SERVICE);
         String IMSI = tm.getSubscriberId();
         //IMSI前面三位460是国家号码，其次的两位是运营商代号，00、02是中国移动，01是联通，03是电信。

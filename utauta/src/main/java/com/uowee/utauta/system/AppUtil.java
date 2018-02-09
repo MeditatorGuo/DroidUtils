@@ -27,6 +27,7 @@ import java.util.List;
 public final class AppUtil {
     public static final String SEMICOLON = ";";
     public static final String SourceType = "Android";
+
     private AppUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
@@ -119,10 +120,10 @@ public final class AppUtil {
     }
 
 
-    public static long getAppDate(Context context, String packageName) {
+    public static long getAppDate(String packageName) {
         long lastUpdateTime = 0;
         try {
-            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+            PackageInfo packageInfo = Util.getApp().getPackageManager().getPackageInfo(packageName, 0);
             lastUpdateTime = packageInfo.lastUpdateTime;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -340,10 +341,9 @@ public final class AppUtil {
     /**
      * 获取userAgent
      *
-     * @param context 上下文信息
      * @return 系统相关的信息
      */
-    public static String getUserAgent(Context context, String appId) {
+    public static String getUserAgent(String appId) {
         StringBuffer userAgent = new StringBuffer();
         // ==============================================================
         // User-Agent

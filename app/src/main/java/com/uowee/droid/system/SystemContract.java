@@ -22,5 +22,10 @@ public interface SystemContract {
         void getCpuInfo();
 
         void getTelephoneInfo();
+
+        void getAppInfo();
+
+        void getSDCardPath();
+
     }
 }

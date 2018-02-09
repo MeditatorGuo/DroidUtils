@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements SystemContract.Vi
         items.add(new GridItem("Device", R.mipmap.genius));
         items.add(new GridItem("CPU", R.mipmap.genius));
         items.add(new GridItem("Telephone", R.mipmap.genius));
-        items.add(new GridItem("Screen", R.mipmap.genius));
+        items.add(new GridItem("App", R.mipmap.genius));
+        items.add(new GridItem("SDCard", R.mipmap.genius));
     }
 
     private Context mContext;
@@ -112,6 +113,12 @@ public class MainActivity extends AppCompatActivity implements SystemContract.Vi
                     break;
                 case 4:
                     mSystemPresenter.getTelephoneInfo();
+                    break;
+                case 5:
+                    mSystemPresenter.getAppInfo();
+                    break;
+                case 6:
+                    mSystemPresenter.getSDCardPath();
                     break;
                 default:
                     break;
