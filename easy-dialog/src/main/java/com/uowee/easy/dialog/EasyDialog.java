@@ -144,7 +144,6 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
                     getBuilder().listCallbackCustom.onItemClick(EasyDialog.this, view, position, getBuilder().adapter.getItem(position));
                     return;
                 }
-                //这里区分两种listCallbck，是为了给单选和多项做准备
                 if (getBuilder().listCallback != null) {
                     getBuilder().listCallback.onItemClick(EasyDialog.this, view, position, getBuilder().adapter.getItem(position));
                 }
@@ -216,7 +215,6 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
         protected boolean wrapCustomViewInScroll;
         protected float contentTextSize = 16F;
 
-        //list相关
         protected List<CharSequence> items;
         protected ListCallback listCallback;
         protected int dividerColorRes;
@@ -228,9 +226,8 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
         protected float itemsTextSize = 16F;
         protected int itemsHeight = Utils.dp2px(46);
 
-        //自定义adapter方式
         protected ListAdapter adapter;
-        //progress
+
         protected boolean indeterminateProgress;
         protected boolean showMinMax;
         protected int progress = -2;
@@ -238,7 +235,7 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
         protected String progressNumberFormat;
         protected NumberFormat progressPercentFormat;
         protected int progressColor;
-        //按钮相关
+
         protected CharSequence positiveText;
         protected CharSequence neutralText;
         protected CharSequence negativeText;
@@ -251,14 +248,14 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
         protected SingleButtonCallback onNeutralCallback;
         protected SingleButtonCallback onAnyCallback;
         protected int bottomSpColor;
-        protected int bottomSpHeight = 1;//默认是一像素
-        //dialog 相关
+        protected int bottomSpHeight = 1;
+
         protected boolean autoDismiss = true;
         protected OnDismissListener dismissListener;
         protected OnCancelListener cancelListener;
         protected OnKeyListener keyListener;
         protected OnShowListener showListener;
-        //color 配置相关
+
         protected boolean cancelable = true;
         protected boolean canceledOnTouchOutside = true;
 
@@ -287,7 +284,6 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
             progressNumberFormat = "%1d/%2d";
         }
 
-        /*     标题相关    */
         public Builder title(@StringRes int titleRes) {
             title(this.context.getText(titleRes));
             return this;
@@ -322,7 +318,6 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
             this.titleTypeFace = titleTypeFace;
             return this;
         }
-/*       * 内容相关        * */
 
         public Builder content(@StringRes int contentRes) {
             content(this.context.getText(contentRes));
@@ -455,14 +450,7 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
             return this;
         }
 
-        /* 进度相关 */
 
-        /**
-         * Makes this dialog a progress dialog.
-         *
-         * @param indeterminate true 显示圆形进度，false，显示百分比进度
-         * @param max           When indeterminate is false, the max value the horizontal progress bar can get to.
-         */
         public Builder progress(boolean indeterminate, int max) {
             if (this.customView != null)
                 throw new IllegalStateException("You cannot set progress() when you're using a custom view.");
@@ -477,31 +465,17 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
             return this;
         }
 
-        /**
-         * Makes this dialog a progress dialog.
-         *
-         * @param indeterminate true 显示圆形进度，false，显示百分比进度
-         * @param max           When indeterminate is false, the max value the horizontal progress bar can get to.
-         * @param showMinMax    For determinate dialogs, the min and max will be displayed to the left (start) of the progress bar, e.g. 50/100.
-         */
         public Builder progress(boolean indeterminate, int max, boolean showMinMax) {
             this.showMinMax = showMinMax;
             return progress(indeterminate, max);
         }
 
-        /**
-         * hange the format of the small text showing current and maximum units of progress.
-         * The default is "%1d/%2d".
-         */
         public Builder progressNumberFormat(@NonNull String format) {
             this.progressNumberFormat = format;
             return this;
         }
 
-        /**
-         * Change the format of the small text showing the percentage of progress.
-         * The default is NumberFormat.getPercentageInstance().
-         */
+
         public Builder progressPercentFormat(@NonNull NumberFormat format) {
             this.progressPercentFormat = format;
             return this;
@@ -516,7 +490,6 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
             return progressColor(Utils.getColor(this.context, colorRes));
         }
 
-        /* 按钮相关 */
         public Builder buttonTextSize(float buttonTextSize) {
             this.buttonTextSize = buttonTextSize;
             return this;
@@ -622,7 +595,6 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
             return this;
         }
 
-        /* dialog 相关 */
 
         public Builder cancelable(boolean cancelable) {
             this.cancelable = cancelable;
@@ -635,12 +607,6 @@ public class EasyDialog extends BaseDialog implements View.OnClickListener {
             return this;
         }
 
-        /**
-         * 是否在触发点击事件之后自动隐藏，默认是true
-         *
-         * @param dismiss
-         * @return
-         */
         public Builder autoDismiss(boolean dismiss) {
             this.autoDismiss = dismiss;
             return this;

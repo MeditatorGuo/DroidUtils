@@ -23,12 +23,7 @@ public class Utils {
         }
     }
 
-    /**
-     * 将color转换为colorList，添加disable的颜色处理
-     *
-     * @param newPrimaryColor
-     * @return
-     */
+
     public static ColorStateList wrapColor(int newPrimaryColor) {
         int[][] states = new int[][]{
                 new int[]{-android.R.attr.state_enabled}, // disabled
@@ -42,13 +37,6 @@ public class Utils {
     }
 
 
-    /**
-     * 添加颜色透明度
-     *
-     * @param color
-     * @param factor
-     * @return
-     */
     public static int adjustAlpha(int color, @SuppressWarnings("SameParameterValue") float factor) {
         int alpha = Math.round(Color.alpha(color) * factor);
         int red = Color.red(color);

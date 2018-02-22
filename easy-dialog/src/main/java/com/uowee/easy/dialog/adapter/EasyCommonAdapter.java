@@ -9,9 +9,7 @@ public abstract class EasyCommonAdapter<T> extends BaseAdapter {
 
     private List<T> items = null;
 
-    /**
-     * @param items 数据
-     */
+
     public EasyCommonAdapter(List<T> items) {
         this.items = items;
     }

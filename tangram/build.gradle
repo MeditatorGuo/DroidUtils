@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 26
 
@@ -33,3 +33,14 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
 
 }
+//添加
+publish {
+    userOrg = 'aliex'//bintray.com用户名
+    groupId = 'com.uowee.tangram'//jcenter上的路径
+    artifactId = 'tangram'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'this is a layout UI library.'//描述，不重要
+    website = 'https://github.com/guowee/DroidUtils/'
+}
+
+

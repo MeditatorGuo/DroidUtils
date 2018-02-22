@@ -47,16 +47,11 @@ public class EasyButton extends TextView {
         this.easyButtonType = easyButtonType;
     }
 
-    /**
-     * 初始化工作
-     */
     private void init() {
         setBackgroundResource(R.drawable.press_rect_selector);
     }
 
-    /**
-     * 按钮类型
-     */
+
     public static enum EasyButtonType {
         PositiveBtn,
         NegativeBtn,

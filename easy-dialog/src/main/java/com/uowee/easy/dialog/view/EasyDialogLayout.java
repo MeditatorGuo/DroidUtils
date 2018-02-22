@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-import com.uowee.easy.dialog.R;
 import com.uowee.easy.dialog.utils.Utils;
 
 /**
@@ -16,9 +15,7 @@ import com.uowee.easy.dialog.utils.Utils;
  */
 
 public class EasyDialogLayout extends LinearLayout {
-    /**
-     * 如果包含scrollView
-     */
+
     private ScrollView mScrollView;
     private View mBottom;
 
@@ -56,16 +53,13 @@ public class EasyDialogLayout extends LinearLayout {
         if (null != mScrollView) {
             int measuredScrollViewHeight = mScrollView.getMeasuredHeight();
             int dp_320 = Utils.dp2px(320);
-            //超过了一定长度，启用scrollView的高度限定
             if (measuredScrollViewHeight > dp_320) {
                 int width = getMeasuredWidth();
                 int height = getMeasuredHeight() - measuredScrollViewHeight + dp_320;
 
                 if (null != mBottom && mBottom.getVisibility() == VISIBLE) {
-                    //有底栏
                     height += mBottom.getMeasuredHeight();
                 } else {
-                    //处理padding
                     height += Utils.dp2px(10);
                 }
 
