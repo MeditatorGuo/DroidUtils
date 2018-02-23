@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 26
 
@@ -33,12 +32,3 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
 
-//添加
-publish {
-    userOrg = 'aliex'//bintray.com用户名
-    groupId = 'com.uowee.dialog'//jcenter上的路径
-    artifactId = 'easy-dialog'//项目名称
-    publishVersion = '1.0.1'//版本号
-    desc = 'this is an easy dialog library.'//描述，不重要
-    website = 'https://github.com/guowee/DroidUtils/'
-}
