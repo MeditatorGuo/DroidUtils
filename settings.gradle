@@ -1,1 +1,1 @@
-include ':app', ':utauta', ':tangram', ':easy-dialog'
+include ':app', ':utauta'

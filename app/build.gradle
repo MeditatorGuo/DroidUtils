@@ -26,8 +26,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation project(':tangram')
     implementation 'com.android.support:recyclerview-v7:26.1.0'
-    implementation project(':utauta')
-    implementation project(':easy-dialog')
+    compile 'com.uowee.utauta:utauta:1.0.0'
+    compile 'com.muse.easy.dialog:easy-dialog:1.0.0'
+
 }
