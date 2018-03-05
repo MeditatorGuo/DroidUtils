@@ -8,9 +8,9 @@ import android.support.v7.widget.RecyclerView;
 
 import com.uowee.droid.util.R;
 import com.uowee.droid.layout.adapter.ColumnLayoutAdapter;
-import com.uowee.tangram.VirtualLayoutManager;
-import com.uowee.tangram.adapter.DelegateAdapter;
-import com.uowee.tangram.helper.ColumnLayoutHelper;
+import com.muse.tangram.VirtualLayoutManager;
+import com.muse.tangram.adapter.DelegateAdapter;
+import com.muse.tangram.helper.ColumnLayoutHelper;
 
 /**
  * Created by GuoWee on 2018/1/14.

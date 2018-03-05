@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
 import com.uowee.droid.util.R;
-import com.uowee.tangram.VirtualLayoutManager;
-import com.uowee.tangram.adapter.DelegateAdapter;
+import com.muse.tangram.VirtualLayoutManager;
+import com.muse.tangram.adapter.DelegateAdapter;
 
 import java.util.LinkedList;
 import java.util.List;

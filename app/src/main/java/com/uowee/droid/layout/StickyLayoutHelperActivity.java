@@ -10,11 +10,11 @@ import com.uowee.droid.util.R;
 import com.uowee.droid.layout.adapter.DelegateRecyclerAdapter;
 import com.uowee.droid.layout.adapter.StaggeredAdapter;
 import com.uowee.droid.layout.adapter.StickyLayoutAdapter;
-import com.uowee.tangram.VirtualLayoutManager;
-import com.uowee.tangram.adapter.DelegateAdapter;
-import com.uowee.tangram.helper.LinearLayoutHelper;
-import com.uowee.tangram.helper.StaggeredGridLayoutHelper;
-import com.uowee.tangram.helper.StickyLayoutHelper;
+import com.muse.tangram.VirtualLayoutManager;
+import com.muse.tangram.adapter.DelegateAdapter;
+import com.muse.tangram.helper.LinearLayoutHelper;
+import com.muse.tangram.helper.StaggeredGridLayoutHelper;
+import com.muse.tangram.helper.StickyLayoutHelper;
 
 /**
  * Created by GuoWee on 2018/1/14.

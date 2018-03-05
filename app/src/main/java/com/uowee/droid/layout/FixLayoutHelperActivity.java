@@ -9,10 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import com.uowee.droid.util.R;
 import com.uowee.droid.layout.adapter.DelegateRecyclerAdapter;
 import com.uowee.droid.layout.adapter.FixLayoutAdapter;
-import com.uowee.tangram.VirtualLayoutManager;
-import com.uowee.tangram.adapter.DelegateAdapter;
-import com.uowee.tangram.helper.FixLayoutHelper;
-import com.uowee.tangram.helper.LinearLayoutHelper;
+import com.muse.tangram.VirtualLayoutManager;
+import com.muse.tangram.adapter.DelegateAdapter;
+import com.muse.tangram.helper.FixLayoutHelper;
+import com.muse.tangram.helper.LinearLayoutHelper;
 
 /**
  * Created by GuoWee on 2018/1/14.

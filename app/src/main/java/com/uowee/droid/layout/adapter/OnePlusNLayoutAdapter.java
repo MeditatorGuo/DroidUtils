@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.uowee.droid.util.R;
-import com.uowee.tangram.adapter.DelegateAdapter;
-import com.uowee.tangram.helper.LayoutHelper;
+import com.muse.tangram.adapter.DelegateAdapter;
+import com.muse.tangram.helper.LayoutHelper;
 
 /**
  * Created by GuoWee on 2018/1/14.

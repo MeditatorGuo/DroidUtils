@@ -28,6 +28,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.uowee.utauta:utauta:1.0.0'
-    compile 'com.muse.easy.dialog:easy-dialog:1.0.0'
+    compile 'com.muse.easy.dialog:easy-dialog:1.0.1'
+    compile 'com.muse.tangram:tangram:1.0.1'
 
 }

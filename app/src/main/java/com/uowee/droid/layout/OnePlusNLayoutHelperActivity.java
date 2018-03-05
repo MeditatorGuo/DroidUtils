@@ -8,9 +8,9 @@ import android.support.v7.widget.RecyclerView;
 
 import com.uowee.droid.util.R;
 import com.uowee.droid.layout.adapter.OnePlusNLayoutAdapter;
-import com.uowee.tangram.VirtualLayoutManager;
-import com.uowee.tangram.adapter.DelegateAdapter;
-import com.uowee.tangram.helper.OnePlusNLayoutHelper;
+import com.muse.tangram.VirtualLayoutManager;
+import com.muse.tangram.adapter.DelegateAdapter;
+import com.muse.tangram.helper.OnePlusNLayoutHelper;
 
 /**
  * Created by GuoWee on 2018/1/14.

@@ -3,22 +3,21 @@ package com.uowee.droid;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.muse.easy.dialog.EasyDialog;
 import com.uowee.droid.adapter.GridViewAdapter;
 import com.uowee.droid.adapter.LinearAdapter;
 import com.uowee.droid.model.GridItem;
 import com.uowee.droid.system.SystemContract;
 import com.uowee.droid.system.SystemPresenter;
 import com.uowee.droid.util.R;
-import com.uowee.easy.dialog.EasyDialog;
-import com.uowee.tangram.VirtualLayoutManager;
-import com.uowee.tangram.adapter.DelegateAdapter;
-import com.uowee.tangram.helper.GridLayoutHelper;
-import com.uowee.tangram.helper.LinearLayoutHelper;
+import com.muse.tangram.VirtualLayoutManager;
+import com.muse.tangram.adapter.DelegateAdapter;
+import com.muse.tangram.helper.GridLayoutHelper;
+import com.muse.tangram.helper.LinearLayoutHelper;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
